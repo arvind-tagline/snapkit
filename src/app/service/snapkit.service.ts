@@ -58,8 +58,8 @@ export class SnapkitService {
     const client_id = 'a4b7cb21-cf25-4cf8-b332-c8ef0c774776';
     const redirect_uri = 'https://conver-1b364.web.app/snapchat/MALtHi4OQLby0hgn1TlAqgnPAav2';
     const scope = 'https://auth.snapchat.com/oauth2/api/user.display_name';
-    const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4201%252F%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
-    // const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttps%253A%252F%252Fconver-1b364.web.app%252Fsnapchat%252F12%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
+    // const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4201%252F%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
+    const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttps%253A%252F%252Fconver-1b364.web.app%252Fsnapchat%252F12%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
     // Redirect user to the Snapchat authorization page
     window.location.href = authUrl;
 
