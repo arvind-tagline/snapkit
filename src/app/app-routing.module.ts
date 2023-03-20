@@ -4,12 +4,8 @@ import { SnapkitComponent } from './components/snapkit/snapkit.component';
 
 const routes: Routes = [
   {
-    path:'test',
+    path:'',
     component:SnapkitComponent
-  },
-  {
-    path:'**',
-    redirectTo:'test'
   }
 ];
 

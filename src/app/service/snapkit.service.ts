@@ -58,10 +58,8 @@ export class SnapkitService {
     const client_id = 'a4b7cb21-cf25-4cf8-b332-c8ef0c774776';
     const redirect_uri = 'https://conver-1b364.web.app/snapchat/MALtHi4OQLby0hgn1TlAqgnPAav2';
     const scope = 'https://auth.snapchat.com/oauth2/api/user.display_name';
-    // https://accounts.snapchat.com/accounts/oauth2/auth?client_id=a4b7cb21-cf25-4cf8-b332-c8ef0c774776&redirect_uri=http%3A%2F%2Flocalhost%3A4201%2F&response_type=token&scope=https%3A%2F%2Fauth.snapchat.com%2Foauth2%2Fapi%2Fuser.display_name%20https%3A%2F%2Fauth.snapchat.com%2Foauth2%2Fapi%2Fuser.bitmoji.avatar&state=AoWU-U37CK_xivsVzJUV4JlT5XSXCPP_kq0B-idjWq0
-    // const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4201%252F%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
-    // https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttps%253A%252F%252Fconver-1b364.web.app%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar
-    const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttps%253A%252F%252Fconver-1b364.web.app%252Fsnapchat%252F12%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
+    const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A4201%252F%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
+    // const authUrl = `https://accounts.snapchat.com/accounts/v2/login?continue=%2Faccounts%2Foauth2%2Fauth%3Fclient_id%3Da4b7cb21-cf25-4cf8-b332-c8ef0c774776%26redirect_uri%3Dhttps%253A%252F%252Fconver-1b364.web.app%252Fsnapchat%252F12%26response_type%3Dtoken%26scope%3Dhttps%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.display_name%2520https%253A%252F%252Fauth.snapchat.com%252Foauth2%252Fapi%252Fuser.bitmoji.avatar`;
     // Redirect user to the Snapchat authorization page
     window.location.href = authUrl;
 
@@ -102,20 +100,21 @@ export class SnapkitService {
   public getUserDetails(access_token: any, data: any) {
     const headers = new HttpHeaders(
       {
-        authorization: `Bearer ${access_token}`
+        authorization: `Bearer ${access_token}`,
+        'access-control-allow-origin': 'http://localhost:4201',
+        'access-control-allow-methods': 'POST',
+        'access-control-allow-headers': 'Content-Type',
       }
+      // 'access-control-allow-origin': 'http://localhost:4201'
     );
-    // header('Access-Control-Allow-Origin: *');
-    // header('Access-Control-Allow-Methods: GET');
-    // header('Access-Control-Allow-Headers: Content-Type');
-    return this.http.get("https://api.snapchat.com/v1/me",{ headers: headers });
+    return this.http.post("https://api.snapchat.com/v1/me",data,{ headers: headers });
   }
 
   public getMyData(){
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders(
       {
-        authorization:`Bearer ${token}`
+        authorization:`Bearer ${token}`,
       }
     );
     return this.http.get('https://auth.snapchat.com/oauth2/api/user.display_name',{headers:headers});
